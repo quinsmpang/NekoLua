@@ -1,0 +1,22 @@
+--[[
+	Frequently(or not) Asked Questions.
+]]--
+        What this project is about: (TODO: Insert vague explanation here...)
+                ... Skynet?
+
+	Why Lua?
+		Because it's an easy and flexible langage.
+		Also, don't you love LuaJIT? :)
+
+	You should instead use X programming language...
+		No.
+		Lua does the job perfectly.
+		The only other language used here is C, and that's for adding functionality to Lua. Also C++ sometimes.
+
+	I don't like the direction this project is going...
+		Feel free to fork!
+
+	Why are you licensing this to Public Domain? Aren't you afraid that some evil corporation will steal your code? Why not GPL?
+		Nope. It's here for that. Feel free to use the code for any purposes you want.
+		As for the GPL: It's too restrictive. It's the cancer and AIDS of licensing.
+			Good for certain things (Operating systems), bad for others (libraries, game engines, etc...).

@@ -1,0 +1,24 @@
+#!/usr/bin/env luajit
+args = {...}; require("kernel");
+
+nekolib = ifNotThenRequire("nekolib");
+
+--nekolib.money = ifNotThenRequire("nekolib.money");
+nekolib.money.wow = ifNotThenRequire("nekolib.money.wow"); WowGold = nekolib.money.wow;
+
+
+function main(args)
+	--forkv(_G);
+	local copper = 21474800;
+	
+	local goldFmtd = WowGold.getFormattedGold(copper);
+	print(goldFmtd);
+	print(WowGold.getSilver(copper));
+	print(WowGold.getCopper(copper));
+	--print(("I have %dg %ds %dc"):format(copper / 100 / 100, (copper / 100) % 100, copper % 100));
+
+
+
+end
+
+main(args);

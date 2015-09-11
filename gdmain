@@ -1,0 +1,35 @@
+#!/usr/bin/env luajit
+args = {...}; require("kernel");
+
+nekolib = ifNotThenRequire("nekolib");
+gd = ifNotThenRequire("gd");
+
+function createImg(size, hours, minutes)
+	local im = gd.createTrueColor(size, size);
+	local white = im:colorAllocate(255,255,255);
+	local gray = im:colorAllocate(128,128,128);
+	local black = im:colorAllocate(0,0,0);
+	local blue = im:colorAllocate(0,0,128);
+	local cxy = size/2;
+
+	im:filledRectangle(0,0,size,size,white);
+	im:setThickness(math.max(1,size/100));
+	im:arc(cxy,cxy,size,size,0,360,black);
+	
+	return im;
+end
+
+
+
+
+function main(args)
+	--forkv(_G);
+	local im = createImg(100);
+	str = im:pngStr();
+	
+	local file = io.open("img.png", "w");
+	file:write(str);
+	file:close();
+end
+
+main(args);

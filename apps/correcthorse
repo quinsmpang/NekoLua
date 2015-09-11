@@ -1,0 +1,59 @@
+#!/usr/bin/env luajit
+args = {...}; require("kernel");
+
+
+local fileName = "/usr/share/dict/words";
+local words = {}
+local _numberOfWords = 0; --Counter
+local numberOfWords = 0; --User Input
+local passphrase = "";
+local numberOfLinesInFile = 0;
+
+local dictionary = {}
+
+if not neko then neko = require("nekolib"); end
+
+--[[
+  http://xkcd.com/936/
+  USAGE: ./passphrase numberOfWordsToOutPut [separator]
+  E.g. ./passphrase 3 " "
+
+  numberOfWordsToOutput is optional, defaults to 4.
+
+  Separator is optional, defaults to space
+]]--
+function main(args)
+  numberOfWords = tonumber(args[1]) or 4;
+  arg2 = tostring(args[2])
+
+  if neko.std.isNil(arg2) then
+    arg2 = " ";
+  end
+  separator = arg2;
+  file = io.open(fileName, r);
+
+  for lines in file:lines() do
+    table.insert(dictionary, lines);
+  end
+  file:close();
+    while _numberOfWords < numberOfWords do
+
+        lineNum = neko.std.math.getRandom(1, #dictionary);
+
+        table.insert(words, dictionary[lineNum]);
+
+      _numberOfWords = _numberOfWords + 1;
+    end
+
+
+for k,v in pairs(words) do
+  if passphrase == "" then
+    passphrase = v;
+  else
+    passphrase = passphrase .. separator .. v;
+  end
+end
+print(passphrase);
+end
+
+main(args);

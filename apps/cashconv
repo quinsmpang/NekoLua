@@ -1,0 +1,14 @@
+#!/usr/bin/env luajit
+args = {...}; require("kernel");
+
+if not neko then neko = require("nekolib"); end
+
+function main(args)
+	if not args[1] or not args[2] or not args[3] then not_ok = true; end
+	if not_ok then print("Usage: cashconv FROM TO AMOUNT"); end
+
+	converted = neko.money.BTC.convert(args[1] or "BTC", args[2] or "CAD", args[3] or 1);
+	print(args[3] .. " " .. args[1] .. " = " .. converted .. " " .. args[2]);
+end
+
+main(args);

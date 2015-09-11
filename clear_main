@@ -1,0 +1,10 @@
+#!/usr/bin/env luajit
+args = {...}; require("kernel");
+
+if not nekolib then nekolib = require("nekolib"); end
+
+function main(args)
+
+end
+
+main(args);

@@ -1,0 +1,38 @@
+#!/usr/bin/env luajit
+args = {...}; require("kernel");
+
+if not neko then neko = require("nekolib"); end
+
+Comics = {}
+Comics.QC_LAST_MODIFIED_MD5 = "75ef436b0a51359a9cbcc15752cc7664"; --Temporarily hardcoded ;)!
+Comics.SaWoo_LAST_MODIFIED_MD5 = "3b396b58a609f2be5989ece150c4750f"
+
+
+function checkComicSum(url, compareTo)
+	local _updated = false;
+	_content, _response, _headers = http.request(url);
+	if _response ~= 200 then return compareTo; end --Assume checksum hasn't changed, if we can't access the page. (What if the website is gone for good?)
+	local _last_modified_md5 = neko.crypto.md5.sumhexa(_headers["last-modified"]);
+	if _last_modified_md5 ~= compareTo then _updated = true; end
+	--print(_headers["last-modified"]);
+	return _last_modified_md5, _updated;
+
+end
+
+function main(args)
+	chksum, updated = checkComicSum("http://www.questionablecontent.net/QCRSS.xml", Comics.QC_LAST_MODIFIED_MD5);
+	if updated then
+		print("New comic available on http://www.questionablecontent.net/ ! New Checksum of last-modified: " .. tostring(chksum));
+	end
+
+	chksum, updated = checkComicSum("http://www.sandraandwoo.com/", Comics.SaWoo_LAST_MODIFIED_MD5);
+	if updated then
+		print("New Comic available on http://www.sandraandwoo.com/ ! New Checksum of last-modified: " .. tostring(chksum));
+	end
+
+
+
+
+end
+
+main(args);

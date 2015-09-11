@@ -1,0 +1,34 @@
+--[[
+	Coding Guidelines for this project.
+]]--
+	
+	For Licensing Guidelines, read "LICENSES".
+	
+	
+	Coding Style Guidelines:
+		-Generally this: https://github.com/Olivine-Labs/lua-style-guide
+			-This list overrides the guidelines in that url, where applicable.
+		-Always encode files in UTF-8
+		-Use tabs for indentation. 
+		-No deprecated Lua functions in patches. Deprecation means removal. This project is future-oriented and legacy code must be purged.
+		-Use semicolons! Lua doesn't require this, but DO IT!
+		
+		
+		
+		
+		
+	About MultiOS support:
+		This project is primarily developed FOR Unix-like operating systems (*BSDs, Linux)
+		Linux-specific patches are to be avoided if possible. Will be accepted if really needed though.
+		*BSD-specific patches (excluding OSX) are also to be avoided if possible, but will be accepted
+			if really needed.
+		
+		--[[ Legacy Operating Systems ]] --
+		Windows support is a non-issue. Windows can die in a fire. Patches will be rejected.
+		OSX support is a non-issue as well. This pathetic piece of shit can die in a fire too. Patches will be rejected.
+		
+		The code in the repo should be stripped of Windows and OSX parts, if feasible
+	
+	
+	
+	

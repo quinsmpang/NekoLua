@@ -1,0 +1,14 @@
+#!/usr/bin/env luajit
+args = {...}; require("kernel");
+
+nekolib = ifNotThenRequire("nekolib");
+
+
+
+function main(args)
+	--forkv(_G);
+	
+
+end
+
+main(args);
